@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type ButtonHTMLAttributes, ref } from 'vue'
+import { type ButtonHTMLAttributes, reactive, ref } from 'vue'
 
 const message = 'message is here'
 const additionalMessage = 'extra information'
@@ -22,6 +22,13 @@ const countFunction = ref(0)
 function increment() {
   countFunction.value++
 }
+
+interface Book {
+  title: string
+  year?: number
+}
+
+const book: Book = reactive({ title: 'learn vue', year: 2000 })
 </script>
 
 <template>
@@ -40,6 +47,8 @@ function increment() {
   <p>Current count value: {{ count }}</p>
   <br /><br /><br />
   <button @click="increment">Function button {{ countFunction }}</button>
+  <br /><br /><br /> <br /><br /><br />
+  <button @click="book.year++">book: {{ book }}</button>
 </template>
 
 <style scoped></style>
