@@ -6,6 +6,12 @@ import router from './router'
 
 const app = createApp(App)
 
+
+app.config.errorHandler = (err) => {
+  console.log("app level error handler: " + err)
+}
+
+
 app.use(createPinia())
 app.use(router)
 
