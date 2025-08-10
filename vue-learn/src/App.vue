@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type ButtonHTMLAttributes, reactive, ref } from 'vue'
+import { type ButtonHTMLAttributes, computed, reactive, ref } from 'vue'
 
 const message = 'message is here'
 const additionalMessage = 'extra information'
@@ -28,6 +28,31 @@ interface Book {
   year?: number
 }
 
+const author = reactive({
+  name: 'John Doe',
+  books: [
+    'Vue 2 - Advanced Guide',
+    'Vue 3 - Basic Guide',
+    'Vue 4 - The Mystery'
+  ]
+})
+
+const anotherAuthor = reactive({
+  name: 'For Bro',
+  books: [
+  ]
+})
+
+// too much logic in template can make it bloated and hard to maintain. Complex logic can be included
+// which includes reactive data use computed property.
+const hasBooksPublished = computed(() => {
+  return author.books.length > 0 ? 'Yes' : 'No'
+})
+
+const hasBooksPublishedAnother = computed(() => {
+  return anotherAuthor.books.length > 0 ? 'Yes' : 'No'
+})
+
 const book: Book = reactive({ title: 'learn vue', year: 2000 })
 </script>
 
@@ -49,6 +74,11 @@ const book: Book = reactive({ title: 'learn vue', year: 2000 })
   <button @click="increment">Function button {{ countFunction }}</button>
   <br /><br /><br /> <br /><br /><br />
   <button @click="book.year++">book: {{ book }}</button>
+  <br /><br /><br />
+  <p>Has {{author.name }} published books?</p>
+  <span>{{hasBooksPublished}}</span>
+  <p>Has {{anotherAuthor.name }} published books?</p>
+  <span>{{hasBooksPublishedAnother}}</span>
 </template>
 
 <style scoped></style>
