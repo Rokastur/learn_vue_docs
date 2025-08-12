@@ -71,6 +71,15 @@ function toggleError() {
 function toggleActive() {
   isActive.value = !isActive.value
 }
+
+const name = ref('Vue.js')
+
+function greet(event) {
+  alert(`Hello ${name.value}!`)
+  if (event) {
+    alert(event.target.name)
+  }
+}
 </script>
 
 <template>
@@ -107,6 +116,8 @@ function toggleActive() {
 
   <button @click="toggleActive">Toggle Active</button>
   <button @click="toggleError">Toggle Error</button>
+  <br /><br /><br />
+  <button @click="greet">Greet</button>
 </template>
 
 
