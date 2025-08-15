@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMouse } from './mouse.js'
+import { useMouse } from './nestedEventExample.ts'
 
 const { x, y } = useMouse()
 </script>
