@@ -5,6 +5,7 @@ import Home from './Home.vue'
 import Post from './Post.vue'
 import Archive from './Archive.vue'
 import { ref } from 'vue'
+import MouseComponent from '@/MouseComponent.vue'
 
 const postFontSize = ref(1)
 
@@ -25,6 +26,7 @@ const tabs = {
     <BlogPost title="My journey with Vue" />
     <BlogPost title="Blogging with Vue" @enlarge-text="postFontSize += 0.3" />
     <BlogPost title="Why Vue is so fun" @enlarge-text="postFontSize += 0.1" />
+    <MouseComponent />
 
     <div>
       <button
